@@ -1,3 +1,4 @@
+import asyncio
 import logging
 
 from libgravatar import Gravatar
@@ -50,11 +51,6 @@ async def main():
             await update_token(user, "new_token", session)
 
 
-if __name__ == "__main__":
-    import asyncio
-
-    asyncio.run(main())
-
 
 async def update_token(user: User, token: str | None, db: AsyncSession) -> None:
     user.refresh_token = token
@@ -65,3 +61,6 @@ async def confirmed_email(email: str, db: AsyncSession) -> None:
     user = await get_user_by_email(email, db)
     user.confirmed = True
     await db.commit()
+
+if __name__ == "__main__":
+asyncio.run(main())
