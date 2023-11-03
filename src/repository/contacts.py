@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from src.database.db import SessionLocal
-from src.schemas import ContactCreate, ContactRead
+
+from src.schemas import ContactCreate
 from src.database.models import Contact
 
 

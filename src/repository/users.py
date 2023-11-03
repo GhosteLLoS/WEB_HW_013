@@ -11,7 +11,7 @@ from src.schemas import UserSchema
 
 async def get_user_by_email(email: str, db: AsyncSession) -> User:
     sq = select(User).filter_by(email=email)
-    result = db.execute(sq)
+    result = await db.execute(sq)
     user = result.scalar_one_or_none()
     logging.info(user)
     return user
